@@ -49,11 +49,11 @@ var waldatapool = sync.Pool{New: func() interface{} { return &WalData{} }}
 // NewWalData get data from pool
 func NewWalData() *WalData {
 	data := waldatapool.Get().(*WalData)
+	data.Reset()
 	return data
 }
 
 // PutWalData putback data to pool
 func PutWalData(data *WalData) {
-	data.Reset()
 	waldatapool.Put(data)
 }

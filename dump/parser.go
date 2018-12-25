@@ -18,6 +18,7 @@ package dump
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"strconv"
 	"strings"
@@ -48,47 +49,55 @@ func (p *parser) parse(h handler.Handler) error {
 			return err
 		}
 
-		if !strings.HasPrefix(line, "INSERT") {
+		data := p.parseWalData(line)
+		if data == nil {
 			continue
 		}
-
-		stmt, err := sqlparser.Parse(line)
-		if err != nil {
+		if err := h.Handle(data); err != nil {
 			return err
 		}
-		switch row := stmt.(type) {
-		case *sqlparser.Insert:
 
-			var data = map[string]interface{}{}
-			var columns []string
-			for _, clm := range row.Columns {
-				columns = append(columns, clm.String())
-			}
-			if values, ok := row.Rows.(sqlparser.Values); ok {
+	}
+	return nil
+}
 
-				value := values[0]
-				for i, col := range value {
-					name := columns[i]
-					switch val := col.(type) {
-					case *sqlparser.SQLVal:
-						data[name] = p.parseSqlVal(val)
-					case *sqlparser.NullVal:
-						data[name] = nil
-					}
+func (p *parser) parseWalData(line string) *model.WalData {
+	if !strings.HasPrefix(line, "INSERT") {
+		return nil
+	}
+
+	stmt, err := sqlparser.Parse(line)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	switch row := stmt.(type) {
+	case *sqlparser.Insert:
+
+		var data = map[string]interface{}{}
+		var columns []string
+		for _, clm := range row.Columns {
+			columns = append(columns, clm.String())
+		}
+		if values, ok := row.Rows.(sqlparser.Values); ok {
+
+			value := values[0]
+			for i, col := range value {
+				name := columns[i]
+				switch val := col.(type) {
+				case *sqlparser.SQLVal:
+					data[name] = p.parseSQLVal(val)
+				case *sqlparser.NullVal:
+					data[name] = nil
 				}
-
-				if err := h.Handle(&model.WalData{OperationType: model.Insert, Schema: row.Table.Qualifier.String(), Table: row.Table.Name.String(), Data: data}); err != nil {
-					return err
-				}
 			}
-		default:
-			continue
+			return &model.WalData{OperationType: model.Insert, Schema: row.Table.Qualifier.String(), Table: row.Table.Name.String(), Data: data}
 		}
 	}
 	return nil
 }
 
-func (p *parser) parseSqlVal(val *sqlparser.SQLVal) interface{} {
+func (p *parser) parseSQLVal(val *sqlparser.SQLVal) interface{} {
 	switch val.Type {
 	case sqlparser.StrVal:
 		return string(val.Val)
