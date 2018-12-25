@@ -6,7 +6,7 @@ max_replication_slots = 5; #该值要大于1
 ```
 **修改后需要重启才能生效**
 
-## 创建用replication权限的用户
+## 创建有replication权限的用户
 ```
 CREATE ROLE test_rep LOGIN  ENCRYPTED PASSWORD 'xxxx' REPLICATION;
 GRANT CONNECT ON DATABASE test_database to test_rep;
