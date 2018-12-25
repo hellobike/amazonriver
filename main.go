@@ -41,7 +41,7 @@ func main() {
 		panic(err)
 	}
 
-	amazon := river.NewRiver(&config)
+	amazon := river.New(&config)
 	amazon.Start()
 
 	// block forever
