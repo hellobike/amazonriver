@@ -19,7 +19,7 @@ package util_test
 import (
 	"testing"
 
-	"github.com/hellobike-com/amazonriver/util"
+	"github.com/hellobike/amazonriver/util"
 )
 
 // TestMatch - Tests validate the logic of wild card matching.

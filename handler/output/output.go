@@ -17,8 +17,8 @@
 package output
 
 import (
-	"github.com/hellobike-com/amazonriver/conf"
-	"github.com/hellobike-com/amazonriver/model"
+	"github.com/hellobike/amazonriver/conf"
+	"github.com/hellobike/amazonriver/model"
 )
 
 // Output for write wal data

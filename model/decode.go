@@ -20,7 +20,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hellobike-com/amazonriver/util"
+	"github.com/hellobike/amazonriver/util"
 	"github.com/jackc/pgx"
 	"github.com/nickelser/parselogical"
 )

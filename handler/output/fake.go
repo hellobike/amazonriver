@@ -19,8 +19,8 @@ package output
 import (
 	"fmt"
 
-	"github.com/hellobike-com/amazonriver/conf"
-	"github.com/hellobike-com/amazonriver/model"
+	"github.com/hellobike/amazonriver/conf"
+	"github.com/hellobike/amazonriver/model"
 )
 
 // newFakeHandler create a Handler print all data

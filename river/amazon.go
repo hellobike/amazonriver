@@ -20,7 +20,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/hellobike-com/amazonriver/conf"
+	"github.com/hellobike/amazonriver/conf"
 )
 
 // this is a static check

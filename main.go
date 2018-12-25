@@ -20,8 +20,8 @@ import (
 	"flag"
 	"io/ioutil"
 
-	"github.com/hellobike-com/amazonriver/conf"
-	"github.com/hellobike-com/amazonriver/river"
+	"github.com/hellobike/amazonriver/conf"
+	"github.com/hellobike/amazonriver/river"
 
 	"github.com/json-iterator/go"
 )

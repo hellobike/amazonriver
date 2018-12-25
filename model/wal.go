@@ -19,7 +19,7 @@ package model
 import (
 	"sync"
 
-	"github.com/hellobike-com/amazonriver/conf"
+	"github.com/hellobike/amazonriver/conf"
 )
 
 // WalData represent parsed wal log data

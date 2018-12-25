@@ -21,7 +21,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/hellobike-com/amazonriver/model"
+	"github.com/hellobike/amazonriver/model"
 )
 
 func Test_parser_parseWalData(t *testing.T) {

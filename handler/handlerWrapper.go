@@ -21,10 +21,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/hellobike-com/amazonriver/conf"
-	"github.com/hellobike-com/amazonriver/handler/output"
-	"github.com/hellobike-com/amazonriver/model"
-	"github.com/hellobike-com/amazonriver/util"
+	"github.com/hellobike/amazonriver/conf"
+	"github.com/hellobike/amazonriver/handler/output"
+	"github.com/hellobike/amazonriver/model"
+	"github.com/hellobike/amazonriver/util"
 )
 
 type handlerWrapper struct {

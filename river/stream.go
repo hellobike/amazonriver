@@ -23,10 +23,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/hellobike-com/amazonriver/conf"
-	"github.com/hellobike-com/amazonriver/dump"
-	"github.com/hellobike-com/amazonriver/handler"
-	"github.com/hellobike-com/amazonriver/model"
+	"github.com/hellobike/amazonriver/conf"
+	"github.com/hellobike/amazonriver/dump"
+	"github.com/hellobike/amazonriver/handler"
+	"github.com/hellobike/amazonriver/model"
 	"github.com/jackc/pgx"
 )
 

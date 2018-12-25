@@ -23,8 +23,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hellobike-com/amazonriver/handler"
-	"github.com/hellobike-com/amazonriver/model"
+	"github.com/hellobike/amazonriver/handler"
+	"github.com/hellobike/amazonriver/model"
 
 	"github.com/xwb1989/sqlparser"
 )

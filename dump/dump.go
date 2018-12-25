@@ -22,8 +22,8 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/hellobike-com/amazonriver/conf"
-	"github.com/hellobike-com/amazonriver/handler"
+	"github.com/hellobike/amazonriver/conf"
+	"github.com/hellobike/amazonriver/handler"
 )
 
 // Dumper dump database

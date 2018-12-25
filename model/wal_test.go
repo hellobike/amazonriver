@@ -20,7 +20,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/hellobike-com/amazonriver/conf"
+	"github.com/hellobike/amazonriver/conf"
 )
 
 func TestWalData_Reset(t *testing.T) {
