@@ -1,1 +1,3 @@
 # amazonriver
+
+amazonriver 是一个将postgresql的实时数据同步到es或者kafka的服务
