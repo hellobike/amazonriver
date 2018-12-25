@@ -1,0 +1,64 @@
+hash: 34295fd580805799ee7a558bf5649fd583799fa00a77b379c4c6d371a7b21b23
+updated: 2018-12-25T16:00:10.726990989+08:00
+imports:
+- name: github.com/DataDog/zstd
+  version: c7161f8c63c045cbc7ca051dcc969dd0e4054de2
+- name: github.com/davecgh/go-spew
+  version: d8f796af33cc11cb798c1aaeb27a4ebc5099927d
+  subpackages:
+  - spew
+- name: github.com/eapache/go-resiliency
+  version: 487be0453c7b062bff8dcd0ca2570f09e780a9e2
+  subpackages:
+  - breaker
+- name: github.com/eapache/go-xerial-snappy
+  version: 776d5712da21bc4762676d614db1d8a64f4238b0
+- name: github.com/eapache/queue
+  version: 093482f3f8ce946c05bcba64badd2c82369e084d
+- name: github.com/golang/snappy
+  version: 2e65f85255dbc3072edf28d6b5b8efc472979f5a
+- name: github.com/jackc/pgx
+  version: c59c9cac59ab95eceb0c12ff338923c62f411ea2
+  subpackages:
+  - chunkreader
+  - internal/sanitize
+  - pgio
+  - pgproto3
+  - pgtype
+- name: github.com/json-iterator/go
+  version: 1624edc4454b8682399def8740d46db5e4362ba4
+- name: github.com/mailru/easyjson
+  version: 60711f1a8329503b04e1c88535f419d0bb440bff
+  subpackages:
+  - buffer
+  - jlexer
+  - jwriter
+- name: github.com/modern-go/concurrent
+  version: bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94
+- name: github.com/modern-go/reflect2
+  version: 94122c33edd36123c84d5368cfb2b69df93a0ec8
+- name: github.com/nickelser/parselogical
+  version: b07373e53c91bdd5f918a10504c1329616d4da81
+- name: github.com/olivere/elastic
+  version: 1619150b007041b6dba8aa447f0e2d151cc2b4c5
+  subpackages:
+  - config
+  - uritemplates
+- name: github.com/pierrec/lz4
+  version: 623b5a2f4d2a41e411730dcdfbfdaeb5c0c4564e
+  subpackages:
+  - internal/xxh32
+- name: github.com/pkg/errors
+  version: 059132a15dd08d6704c67711dae0cf35ab991756
+- name: github.com/rcrowley/go-metrics
+  version: 3113b8401b8a98917cde58f8bbd42a1b1c03b1fd
+- name: github.com/Shopify/sarama
+  version: 879f631812a30a580659e8035e7cda9994bb99ac
+- name: github.com/xwb1989/sqlparser
+  version: 120387863bf27d04bc07db8015110a6e96d0146c
+  subpackages:
+  - dependency/bytes2
+  - dependency/hack
+  - dependency/querypb
+  - dependency/sqltypes
+testImports: []
