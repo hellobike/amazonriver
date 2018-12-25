@@ -108,7 +108,7 @@ func (e *esHandler) makeRequest(data *model.WalData) elastic.BulkableRequest {
 			Index(matchedRule.Index).
 			Type(matchedRule.Type).
 			Id(id).
-			Doc(data)
+			Doc(data.Data)
 	case model.Delete:
 		return elastic.NewBulkDeleteRequest().
 			Index(matchedRule.Index).

@@ -40,8 +40,8 @@ type river struct {
 	wg     *sync.WaitGroup
 }
 
-// NewRiver create river from conf
-func NewRiver(conf *conf.Conf) Interface {
+// New create river from conf
+func New(conf *conf.Conf) Interface {
 	return &river{conf: conf}
 }
 
