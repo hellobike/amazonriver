@@ -18,37 +18,37 @@ package conf
 
 // Conf ...
 type Conf struct {
-	// pg_dump 可执行文件路径
+	// PgDumpExec pg_dump 可执行文件路径
 	PgDumpExec string `json:"pg_dump_path"`
-	// Subs 订阅规则
+	// Subscribes 订阅规则
 	Subscribes []*Subscribe `json:"subscribes"`
-	// prometheus
+	// PrometheusAddress prometheus
 	PrometheusAddress string `yaml:"prometheus_address"`
 }
 
 // ESConf es 配置
 type ESConf struct {
-	// es 地址
+	// Addrs es 地址
 	Addrs string `json:"addrs"`
-	// User : es username
+	// User es username
 	User string `json:"user"`
-	// Password : es password
+	// Password es password
 	Password string `json:"password"`
 }
 
 // PGConnConf of pg
 type PGConnConf struct {
-	// 地址
+	// Host 地址
 	Host string `json:"host"`
-	// 端口
+	// Port 端口
 	Port uint16 `json:"port"`
-	// database
+	// Database database
 	Database string `json:"database"`
-	// schema
+	// Schema schema
 	Schema string `json:"schema"`
-	// user
+	// User user
 	User string `json:"user"`
-	// password
+	// Password password
 	Password string `json:"password"`
 }
 
@@ -56,13 +56,13 @@ type PGConnConf struct {
 type Subscribe struct {
 	// Dump 创建复制槽成功后，是否 dump 历史数据
 	Dump bool `json:"dump"`
-	// 逻辑复制槽
+	// SlotName 逻辑复制槽
 	SlotName string `json:"slotName"`
-	// pg 连接配置
+	// PGConnConf pg 连接配置
 	PGConnConf *PGConnConf `json:"pgConnConf"`
-	// 订阅规则
+	// Rules 订阅规则
 	Rules []*Rule `json:"rules"`
-	// ES 配置
+	// ESConf ES 配置
 	ESConf *ESConf `json:"esConf"`
 	// KafkaConf kafka 配置
 	KafkaConf *KafkaConf `json:"kafkaConf"`
@@ -78,13 +78,13 @@ type KafkaConf struct {
 
 // Rule 同步规则
 type Rule struct {
-	// 订阅数据表，支持 ?* 匹配
+	// Table 订阅数据表，支持 ?* 匹配
 	Table string `json:"table"`
-	// 主键
+	// PKs 主键
 	PKs []string `json:"pks"`
 
 	// 下面几项同步到es中时需配置
-	// 用作es中id的字段，多个字段内容会连在一起
+	// ESID 用作es中id的字段，多个字段内容会连在一起
 	ESID []string `json:"esid"`
 	// Index es中的idex
 	Index string `json:"index"`
