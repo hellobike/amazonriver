@@ -1,4 +1,4 @@
-package: github.com/hellobike-com/amazonriver
+package: github.com/hellobike/amazonriver
 import:
 - package: github.com/Shopify/sarama
   version: ~1.20.0
@@ -10,3 +10,6 @@ import:
   version: ~6.2.14
 - package: github.com/xwb1989/sqlparser
 - package: github.com/nickelser/parselogical
+- package: github.com/prometheus/client_golang
+  version: ~0.9.2
+- package: github.com/prometheus/common

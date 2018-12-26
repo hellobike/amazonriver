@@ -47,7 +47,7 @@ type stream struct {
 	cancel context.CancelFunc
 	// ack 锁
 	sendStatusLock sync.Mutex
-
+	// buffered data
 	datas []*model.WalData
 }
 

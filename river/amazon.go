@@ -18,9 +18,11 @@ package river
 
 import (
 	"context"
+	"net/http"
 	"sync"
 
 	"github.com/hellobike/amazonriver/conf"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 // this is a static check
@@ -56,6 +58,10 @@ func (r *river) Start() error {
 			go stream.start(r.ctx, r.wg)
 		}
 	}
+
+	// prometheus exporter
+	http.Handle("/metrics", promhttp.Handler())
+	go http.ListenAndServe(":8080", nil)
 
 	return nil
 }

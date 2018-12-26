@@ -25,6 +25,7 @@ import (
 	"github.com/hellobike/amazonriver/handler/output"
 	"github.com/hellobike/amazonriver/model"
 	"github.com/hellobike/amazonriver/util"
+	"github.com/prometheus/client_golang/prometheus"
 )
 
 type handlerWrapper struct {
@@ -39,6 +40,9 @@ type handlerWrapper struct {
 	skipCache map[string]struct{}
 	cancel    context.CancelFunc
 	done      chan struct{}
+
+	successcounter prometheus.Counter
+	errcounter     prometheus.Counter
 }
 
 func (h *handlerWrapper) runloop(ctx context.Context) {
@@ -84,16 +88,29 @@ func resetTimer(t *time.Timer, d time.Duration) {
 	t.Reset(d)
 }
 
-func (h *handlerWrapper) flush() error {
-	defer h.callback(h.maxPos)
+func (h *handlerWrapper) flush() (err error) {
+	defer func() {
+		if len(h.datas) > 0 {
+			if err != nil {
+				h.errcounter.Inc()
+			} else {
+				fmt.Println("gauge add success", float64(len(h.datas)))
+				h.successcounter.Add(float64(len(h.datas)))
+			}
+		}
+
+		h.callback(h.maxPos)
+		h.datas = nil
+	}()
+
 	if len(h.datas) == 0 {
 		return nil
 	}
 
 	if err := h.output.Write(h.datas...); err != nil {
 		fmt.Println("write err:", err)
+		return err
 	}
-	h.datas = nil
 	return nil
 }
 
