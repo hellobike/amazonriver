@@ -17,9 +17,8 @@
 package output
 
 import (
-	"fmt"
-
 	"github.com/hellobike/amazonriver/conf"
+	"github.com/hellobike/amazonriver/log"
 	"github.com/hellobike/amazonriver/model"
 )
 
@@ -32,8 +31,7 @@ type fakeHandler struct{}
 
 func (l *fakeHandler) Write(datas ...*model.WalData) error {
 	for _, data := range datas {
-		// TODO: update print
-		fmt.Printf("TYPE:%s SCHEME:%s TABLE:%s DATA:%#v\n", data.OperationType.String(), data.Schema, data.Table, data.Data)
+		log.Logger.Infof("TYPE:%s SCHEME:%s TABLE:%s DATA:%#v\n", data.OperationType.String(), data.Schema, data.Table, data.Data)
 	}
 	return nil
 }

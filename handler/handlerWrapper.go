@@ -18,7 +18,6 @@ package handler
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/hellobike/amazonriver/conf"
@@ -94,7 +93,6 @@ func (h *handlerWrapper) flush() (err error) {
 			if err != nil {
 				h.errcounter.Inc()
 			} else {
-				fmt.Println("gauge add success", float64(len(h.datas)))
 				h.successcounter.Add(float64(len(h.datas)))
 			}
 		}
@@ -108,7 +106,6 @@ func (h *handlerWrapper) flush() (err error) {
 	}
 
 	if err := h.output.Write(h.datas...); err != nil {
-		fmt.Println("write err:", err)
 		return err
 	}
 	return nil

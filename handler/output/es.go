@@ -23,6 +23,7 @@ import (
 	"strings"
 
 	"github.com/hellobike/amazonriver/conf"
+	"github.com/hellobike/amazonriver/log"
 	"github.com/hellobike/amazonriver/model"
 	"github.com/hellobike/amazonriver/util"
 
@@ -74,10 +75,9 @@ func (e *esHandler) Write(datas ...*model.WalData) error {
 
 	return util.WithRetry(e.sub.Retry, func() error {
 		if _, err := bulk.Do(context.Background()); err != nil {
-			// TODO: metric err
+			log.Logger.Errorf("write es bulk request err: %v", err)
 			return err
 		}
-		// TODO: metric succeed
 		return nil
 	})
 }

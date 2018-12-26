@@ -19,11 +19,10 @@ package output
 import (
 	"bytes"
 	"fmt"
-	stdlog "log"
-	"os"
 	"time"
 
 	"github.com/hellobike/amazonriver/conf"
+	"github.com/hellobike/amazonriver/log"
 	"github.com/hellobike/amazonriver/model"
 	"github.com/hellobike/amazonriver/util"
 
@@ -51,7 +50,7 @@ func newKafkaOutput(sub *conf.Subscribe) Output {
 	config.Producer.Flush.MaxMessages = 1 << 29
 	config.Producer.RequiredAcks = sarama.NoResponse
 	config.Producer.Return.Successes = true
-	sarama.Logger = stdlog.New(os.Stdout, "[KAFKA]", stdlog.LstdFlags)
+	sarama.Logger = log.Logger
 	config.Producer.Retry.Max = 3
 	if sub.Retry > 0 {
 		config.Producer.Retry.Max = sub.Retry
@@ -108,7 +107,6 @@ func (k *kafkaHandler) Write(datas ...*model.WalData) error {
 		}
 		bts, err := jsoniter.Marshal(msg)
 		if err != nil {
-			// TODO: print err
 			continue
 		}
 
@@ -127,10 +125,9 @@ func (k *kafkaHandler) Write(datas ...*model.WalData) error {
 
 	return util.WithRetry(k.sub.Retry, func() error {
 		if err := k.kafka.SendMessages(msgs); err != nil {
-			// TODO: print err
+			log.Logger.Errorf("write kafka msg err: %v", err)
 			return err
 		}
-		// TODO: metric succeed
 
 		return nil
 	})

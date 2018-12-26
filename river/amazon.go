@@ -21,6 +21,8 @@ import (
 	"net/http"
 	"sync"
 
+	"github.com/hellobike/amazonriver/log"
+
 	"github.com/hellobike/amazonriver/conf"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
@@ -60,11 +62,13 @@ func (r *river) Start() error {
 	}
 
 	if r.conf.PrometheusAddress != "" {
+		log.Logger.Info("start prometheus handler")
 		// prometheus exporter
 		http.Handle("/metrics", promhttp.Handler())
 		go http.ListenAndServe(r.conf.PrometheusAddress, nil)
 	}
 
+	log.Logger.Info("start amazon...")
 	return nil
 }
 

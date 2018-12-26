@@ -23,6 +23,8 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/hellobike/amazonriver/log"
+
 	"github.com/hellobike/amazonriver/conf"
 	"github.com/hellobike/amazonriver/dump"
 	"github.com/hellobike/amazonriver/handler"
@@ -69,11 +71,13 @@ func newStream(pgDump string, sub *conf.Subscribe) *stream {
 func (s *stream) start(ctx context.Context, wg *sync.WaitGroup) error {
 	defer wg.Done()
 
+	log.Logger.Infof("start stream for %s", s.sub.SlotName)
 	ctx, s.cancel = context.WithCancel(ctx)
 
 	config := pgx.ConnConfig{Host: s.sub.PGConnConf.Host, Port: s.sub.PGConnConf.Port, Database: s.sub.PGConnConf.Database, User: s.sub.PGConnConf.User, Password: s.sub.PGConnConf.Password}
 	conn, err := pgx.ReplicationConnect(config)
 	if err != nil {
+		log.Logger.Errorf("create replication connection err: %v", err)
 		return err
 	}
 
@@ -85,6 +89,7 @@ func (s *stream) start(ctx context.Context, wg *sync.WaitGroup) error {
 	if err != nil {
 		// 42710 means replication slot already exists
 		if pgerr, ok := err.(pgx.PgError); !ok || pgerr.Code != "42710" {
+			log.Logger.Errorf("create replication slot err: %v", err)
 			return fmt.Errorf("failed to create replication slot: %s", err)
 		}
 	}
@@ -93,10 +98,12 @@ func (s *stream) start(ctx context.Context, wg *sync.WaitGroup) error {
 
 	// Handle old data from db
 	if err := s.exportSnapshot(snapshotID); err != nil {
+		log.Logger.Errorf("export snapshot %s err: %v", snapshotID, err)
 		return fmt.Errorf("slot name %s, err export snapshot: %v", s.sub.SlotName, err)
 	}
 
 	if err := conn.StartReplication(slotname, 0, -1); err != nil {
+		log.Logger.Errorf("start replication err: %v", err)
 		return err
 	}
 
@@ -141,8 +148,7 @@ func (s *stream) runloop(ctx context.Context) error {
 				return err
 			}
 			if err := s.checkAndResetConn(); err != nil {
-				_ = err
-				// TODO: print err
+				log.Logger.Errorf("reset replication connection err: %v", err)
 			}
 			continue
 		}
@@ -152,7 +158,7 @@ func (s *stream) runloop(ctx context.Context) error {
 		}
 
 		if err := s.replicationMsgHandle(msg); err != nil {
-			// TODO: metric err
+			log.Logger.Errorf("handle replication msg err: %v", err)
 			continue
 		}
 	}
@@ -211,7 +217,6 @@ func (s *stream) replicationMsgHandle(msg *pgx.ReplicationMessage) error {
 	// 回复心跳
 	if msg.ServerHeartbeat != nil {
 		if msg.ServerHeartbeat.ReplyRequested == 1 {
-			// 不处理错误， 会重试
 			s.sendStatus()
 		}
 	}
@@ -229,6 +234,7 @@ func (s *stream) handleMessage(data *model.WalData) (err error) {
 		needFlush = true
 	default:
 		s.datas = append(s.datas, data)
+		// 防止大事务耗尽内存
 		needFlush = len(s.datas) > 1000
 	}
 

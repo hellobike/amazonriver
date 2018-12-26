@@ -1,5 +1,5 @@
-hash: 569e35052e2b0c88767763beb9344d481f398a8c232379df14b1e3ae3d3e3aca
-updated: 2018-12-26T14:07:33.891059552+08:00
+hash: 576bbe694c5a675fa4f2e4db8640dd40fa83fdeae0e8a8a665ef59c907283fe5
+updated: 2018-12-26T18:36:20.157433467+08:00
 imports:
 - name: github.com/beorn7/perks
   version: 3a771d992973f24aa725d07868b467d1ddfceafb
@@ -35,6 +35,8 @@ imports:
   - pgtype
 - name: github.com/json-iterator/go
   version: 1624edc4454b8682399def8740d46db5e4362ba4
+- name: github.com/konsorten/go-windows-terminal-sequences
+  version: 5c8c8bd35d3832f5d134ae1e1e375b69a4d25242
 - name: github.com/mailru/easyjson
   version: 60711f1a8329503b04e1c88535f419d0bb440bff
   subpackages:
@@ -88,6 +90,8 @@ imports:
   version: 3113b8401b8a98917cde58f8bbd42a1b1c03b1fd
 - name: github.com/Shopify/sarama
   version: 879f631812a30a580659e8035e7cda9994bb99ac
+- name: github.com/sirupsen/logrus
+  version: bcd833dfe83d3cebad139e4a29ed79cb2318bf95
 - name: github.com/xwb1989/sqlparser
   version: 120387863bf27d04bc07db8015110a6e96d0146c
   subpackages:
@@ -95,4 +99,13 @@ imports:
   - dependency/hack
   - dependency/querypb
   - dependency/sqltypes
+- name: golang.org/x/crypto
+  version: 505ab145d0a99da450461ae2c1a9f6cd10d1f447
+  subpackages:
+  - ssh/terminal
+- name: golang.org/x/sys
+  version: b4a75ba826a64a70990f11a225237acd6ef35c9f
+  subpackages:
+  - unix
+  - windows
 testImports: []
