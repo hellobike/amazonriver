@@ -1,5 +1,5 @@
-hash: 576bbe694c5a675fa4f2e4db8640dd40fa83fdeae0e8a8a665ef59c907283fe5
-updated: 2018-12-26T18:36:20.157433467+08:00
+hash: eeb3688936aa4fc40c3eb7dfca34f8a2af5dd06b796c6b69e85d039033406c24
+updated: 2018-12-26T18:40:36.292070002+08:00
 imports:
 - name: github.com/beorn7/perks
   version: 3a771d992973f24aa725d07868b467d1ddfceafb
@@ -101,10 +101,12 @@ imports:
   - dependency/sqltypes
 - name: golang.org/x/crypto
   version: 505ab145d0a99da450461ae2c1a9f6cd10d1f447
+  repo: https://github.com/golang/crypto
   subpackages:
   - ssh/terminal
 - name: golang.org/x/sys
   version: b4a75ba826a64a70990f11a225237acd6ef35c9f
+  repo: https://github.com/golang/sys
   subpackages:
   - unix
   - windows

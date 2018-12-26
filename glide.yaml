@@ -15,3 +15,13 @@ import:
 - package: github.com/prometheus/common
 - package: github.com/sirupsen/logrus
   version: ~1.2.0
+
+- package: golang.org/x/crypto
+  repo: https://github.com/golang/crypto
+  subpackages:
+  - ssh/terminal
+- package: golang.org/x/sys
+  repo: https://github.com/golang/sys
+  subpackages:
+  - unix
+  - windows
