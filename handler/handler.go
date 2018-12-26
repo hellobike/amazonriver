@@ -47,13 +47,13 @@ func NewHandler(sub *conf.Subscribe, callback PosCallback) Handler {
 	}
 
 	successCounter := prometheus.NewCounter(prometheus.CounterOpts{
-		Name: sub.SlotName + "_success_count_new",
+		Name: sub.SlotName + "_success_count",
 		Help: "output status of stream",
 	})
 	prometheus.MustRegister(successCounter)
 
 	errCounter := prometheus.NewCounter(prometheus.CounterOpts{
-		Name: sub.SlotName + "_error_count_newz",
+		Name: sub.SlotName + "_error_count",
 		Help: "output status of stream",
 	})
 	prometheus.MustRegister(errCounter)
