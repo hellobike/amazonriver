@@ -78,9 +78,9 @@ type KafkaConf struct {
 
 // Rule 同步规则
 type Rule struct {
-	// Table 订阅数据表，支持 ?* 匹配
+	// Table 订阅数据表，支持 ?* 通配符匹配
 	Table string `json:"table"`
-	// PKs 主键
+	// PKs 表的主键
 	PKs []string `json:"pks"`
 
 	// 下面几项同步到es中时需配置
