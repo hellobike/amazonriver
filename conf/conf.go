@@ -22,6 +22,8 @@ type Conf struct {
 	PgDumpExec string `json:"pg_dump_path"`
 	// Subs 订阅规则
 	Subscribes []*Subscribe `json:"subscribes"`
+	// prometheus
+	PrometheusAddress string `yaml:"prometheus_address"`
 }
 
 // ESConf es 配置

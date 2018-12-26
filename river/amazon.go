@@ -59,9 +59,11 @@ func (r *river) Start() error {
 		}
 	}
 
-	// prometheus exporter
-	http.Handle("/metrics", promhttp.Handler())
-	go http.ListenAndServe(":8080", nil)
+	if r.conf.PrometheusAddress != "" {
+		// prometheus exporter
+		http.Handle("/metrics", promhttp.Handler())
+		go http.ListenAndServe(r.conf.PrometheusAddress, nil)
+	}
 
 	return nil
 }
