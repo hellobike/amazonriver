@@ -26,5 +26,6 @@ import (
 var Logger = logrus.New()
 
 func init() {
+	Logger.SetNoLock()
 	Logger.Out = os.Stdout
 }
