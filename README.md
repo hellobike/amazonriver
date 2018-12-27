@@ -1,5 +1,9 @@
 # amazonriver
 
+[![golang](https://img.shields.io/badge/Language-Go-green.svg?style=flat)](https://golang.org)
+[![GoDoc](https://godoc.org/github.com/hellobike/amazonriver?status.svg)](https://godoc.org/github.com/hellobike/amazonriver)
+![GitHub release](https://img.shields.io/github/release/hellobike/amazonriver.svg)
+
 amazonriver 是一个将postgresql的实时数据同步到es或kafka的服务
 
 ## 原理
