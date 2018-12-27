@@ -71,7 +71,7 @@ func Test_parser_parseWalData(t *testing.T) {
 			p := &parser{
 				r: tt.fields.r,
 			}
-			if got := p.parseWalData(tt.args.line); !reflect.DeepEqual(got, tt.want) {
+			if got := p.parseSql(tt.args.line); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("parser.parseWalData() = %v, want %v", got, tt.want)
 			}
 		})

@@ -49,7 +49,7 @@ func (p *parser) parse(h handler.Handler) error {
 			return err
 		}
 
-		data := p.parseWalData(line)
+		data := p.parseSql(line)
 		if data == nil {
 			continue
 		}
@@ -61,7 +61,7 @@ func (p *parser) parse(h handler.Handler) error {
 	return nil
 }
 
-func (p *parser) parseWalData(line string) *model.WalData {
+func (p *parser) parseSql(line string) *model.WalData {
 	if !strings.HasPrefix(line, "INSERT") {
 		return nil
 	}
