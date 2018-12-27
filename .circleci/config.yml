@@ -22,7 +22,7 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
-      - run: curl https://glide.sh/get | sh
+      - run: go get -u -v -t github.com/Masterminds/glide
       - run: glide install
       - run: go test -v -cover ./...
       - run: go get -u github.com/mattn/goveralls
