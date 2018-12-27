@@ -224,6 +224,7 @@ func (s *stream) replicationMsgHandle(msg *pgx.ReplicationMessage) error {
 }
 
 func (s *stream) handleMessage(data *model.WalData) (err error) {
+	log.Logger.Infof("handle wal data: %v", data)
 	var needFlush bool
 	switch data.OperationType {
 
@@ -258,6 +259,7 @@ func (s *stream) sendStatus() error {
 	s.sendStatusLock.Lock()
 	defer s.sendStatusLock.Unlock()
 
+	log.Logger.Debug("send heartbeat")
 	status, err := pgx.NewStandbyStatus(s.getMaxWal())
 	if err != nil {
 		return err
