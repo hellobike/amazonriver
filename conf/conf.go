@@ -23,7 +23,7 @@ type Conf struct {
 	// Subscribes 订阅规则
 	Subscribes []*Subscribe `json:"subscribes"`
 	// PrometheusAddress prometheus
-	PrometheusAddress string `yaml:"prometheus_address"`
+	PrometheusAddress string `json:"prometheus_address"`
 }
 
 // ESConf es 配置

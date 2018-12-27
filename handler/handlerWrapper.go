@@ -20,11 +20,12 @@ import (
 	"context"
 	"time"
 
+	"github.com/hellobike/amazonriver/monitor"
+
 	"github.com/hellobike/amazonriver/conf"
 	"github.com/hellobike/amazonriver/handler/output"
 	"github.com/hellobike/amazonriver/model"
 	"github.com/hellobike/amazonriver/util"
-	"github.com/prometheus/client_golang/prometheus"
 )
 
 type handlerWrapper struct {
@@ -39,9 +40,6 @@ type handlerWrapper struct {
 	skipCache map[string]struct{}
 	cancel    context.CancelFunc
 	done      chan struct{}
-
-	successcounter prometheus.Counter
-	errcounter     prometheus.Counter
 }
 
 func (h *handlerWrapper) runloop(ctx context.Context) {
@@ -91,9 +89,9 @@ func (h *handlerWrapper) flush() (err error) {
 	defer func() {
 		if len(h.datas) > 0 {
 			if err != nil {
-				h.errcounter.Inc()
+				monitor.IncreaseErrorCount(h.sub.SlotName, 1)
 			} else {
-				h.successcounter.Add(float64(len(h.datas)))
+				monitor.IncreaseSuccessCount(h.sub.SlotName, len(h.datas))
 			}
 		}
 

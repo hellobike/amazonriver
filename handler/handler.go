@@ -22,7 +22,6 @@ import (
 	"github.com/hellobike/amazonriver/conf"
 	"github.com/hellobike/amazonriver/handler/output"
 	"github.com/hellobike/amazonriver/model"
-	"github.com/prometheus/client_golang/prometheus"
 )
 
 // Handler handle dump data
@@ -45,21 +44,6 @@ func NewHandler(sub *conf.Subscribe, callback PosCallback) Handler {
 		skipCache: map[string]struct{}{},
 		done:      make(chan struct{}),
 	}
-
-	successCounter := prometheus.NewCounter(prometheus.CounterOpts{
-		Name: sub.SlotName + "_success_count",
-		Help: "success count of output",
-	})
-	prometheus.MustRegister(successCounter)
-
-	errCounter := prometheus.NewCounter(prometheus.CounterOpts{
-		Name: sub.SlotName + "_error_count",
-		Help: "error count of output",
-	})
-	prometheus.MustRegister(errCounter)
-
-	ret.successcounter = successCounter
-	ret.errcounter = errCounter
 
 	ret.output = output.NewOutput(sub)
 
