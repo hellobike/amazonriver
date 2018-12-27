@@ -10,7 +10,7 @@
         # 是否dump 历史数据，如只需要实时数据，可以不配或配置为false，默认false
         "dump": false,
         # 逻辑复制槽名称，确保唯一
-        "slotName": "slot_for_es",
+        "slotName": "slot_for_kafka",
         # pg 连接配置
         "pgConnConf": {
             "host": "127.0.0.1",
@@ -25,7 +25,9 @@
                 # 表名匹配，支持通配符
                 "table": "student_name",
                 # 表的主键配置
-                "pks": ["id"]
+                "pks": ["id"],
+                # kafka topic
+                "topic": "student_name_logs"
             }
         ],
         # kafka 连接配置
