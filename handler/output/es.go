@@ -41,7 +41,7 @@ func newESOutput(sub *conf.Subscribe) Output {
 		panic("es conf is nil")
 	}
 
-	client, err := elastic.NewSimpleClient(elastic.SetURL(strings.Split(sub.ESConf.Addrs, ",")...), elastic.SetBasicAuth(sub.ESConf.User, sub.ESConf.Password))
+	client, err := elastic.NewClient(elastic.SetURL(strings.Split(sub.ESConf.Addrs, ",")...), elastic.SetBasicAuth(sub.ESConf.User, sub.ESConf.Password))
 	if err != nil {
 		panic(err)
 	}
