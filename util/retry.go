@@ -16,7 +16,7 @@
 
 package util
 
-// WithRetry retry util job succeded or retry count limit exceed
+// WithRetry retry util job succeeded or retry count limit exceed
 func WithRetry(retry int, job func() error) error {
 	var retrys int
 	for {
