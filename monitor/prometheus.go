@@ -25,7 +25,7 @@ func init() {
 	prometheus.MustRegister(errorCounterVec)
 }
 
-// successCounterVec monitor seccess count
+// successCounterVec monitor success count
 var successCounterVec = prometheus.NewCounterVec(prometheus.CounterOpts{
 	Name: "amazonriver_success",
 	Help: "success count",
@@ -37,7 +37,7 @@ var errorCounterVec = prometheus.NewCounterVec(prometheus.CounterOpts{
 	Help: "error count",
 }, []string{"slot_name"})
 
-// IncreaseSuccessCount increase sucess count for slotname
+// IncreaseSuccessCount increase success count for slotname
 func IncreaseSuccessCount(slotname string, count int) {
 	successCounterVec.WithLabelValues(slotname).Add(float64(count))
 }
