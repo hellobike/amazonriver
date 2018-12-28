@@ -1,5 +1,6 @@
 # amazonriver [![CircleCI](https://circleci.com/gh/hellobike/amazonriver.svg?style=svg)](https://circleci.com/gh/hellobike/amazonriver)
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/hellobike/amazonriver)](https://goreportcard.com/report/github.com/hellobike/amazonriver)
 [![golang](https://img.shields.io/badge/Language-Go-green.svg?style=flat)](https://golang.org)
 [![GoDoc](https://godoc.org/github.com/hellobike/amazonriver?status.svg)](https://godoc.org/github.com/hellobike/amazonriver)
 ![GitHub release](https://img.shields.io/github/release/hellobike/amazonriver.svg)
