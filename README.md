@@ -30,7 +30,7 @@ $go install
 
 ### 使用
 
-    amazonriver -configs config.json
+    amazonriver -config config.json
 
 ## PG 配置
 
