@@ -6,6 +6,12 @@
 
 amazonriver 是一个将postgresql的实时数据同步到es或kafka的服务
 
+## 版本支持
+
+- Postgresql 9.4 or later
+- Kafka 0.8 or later
+- ElasticSearch 6.x
+
 ## 原理
 
 amazonriver 利用pg内部的逻辑复制功能,通过在pg创建逻辑复制槽,接收数据库的逻辑变更,通过解析test_decoding特定格式的消息,得到逻辑数据
