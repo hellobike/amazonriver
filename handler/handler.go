@@ -34,6 +34,7 @@ type Handler interface {
 // PosCallback for handler
 type PosCallback func(uint64)
 
+// NewHandler create wal handler with subscribe config
 func NewHandler(sub *conf.Subscribe, callback PosCallback) Handler {
 	ret := &handlerWrapper{
 		dataCh:    make(chan []*model.WalData, 20480),
