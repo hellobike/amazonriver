@@ -103,10 +103,7 @@ func (h *handlerWrapper) flush() (err error) {
 		return nil
 	}
 
-	if err := h.output.Write(h.datas...); err != nil {
-		return err
-	}
-	return nil
+	return h.output.Write(h.datas...)
 }
 
 func (h *handlerWrapper) filterData(data *model.WalData) (matchedRule *conf.Rule, matched bool) {
