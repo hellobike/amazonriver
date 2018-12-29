@@ -1,27 +1,21 @@
 # amazonriver [![CircleCI](https://circleci.com/gh/hellobike/amazonriver.svg?style=svg)](https://circleci.com/gh/hellobike/amazonriver)
 
-[English doc](./README_EN.md)
-
 [![Go Report Card](https://goreportcard.com/badge/github.com/hellobike/amazonriver)](https://goreportcard.com/report/github.com/hellobike/amazonriver)
 [![golang](https://img.shields.io/badge/Language-Go-green.svg?style=flat)](https://golang.org)
 [![GoDoc](https://godoc.org/github.com/hellobike/amazonriver?status.svg)](https://godoc.org/github.com/hellobike/amazonriver)
 [![GitHub release](https://img.shields.io/github/release/hellobike/amazonriver.svg)](https://github.com/hellobike/amazonriver/releases)
 
-amazonriver 是一个将postgresql的实时数据同步到es或kafka的服务
+amazonriver utilize the postgresql logical replication to sync realtime data into elasticsearch or kafka...
 
-## 版本支持
+## Required
 
 - Postgresql 9.4 or later
 - Kafka 0.8 or later
 - ElasticSearch 6.x
 
-## 原理
+## Howto
 
-amazonriver 利用pg内部的逻辑复制功能,通过在pg创建逻辑复制槽,接收数据库的逻辑变更,通过解析test_decoding特定格式的消息,得到逻辑数据
-
-## 安装使用
-
-### 安装
+### Install
 
 ```shell
 $git clone https://github.com/hellobike/amazonriver
@@ -30,28 +24,28 @@ $glide install
 $go install
 ```
 
-### 使用
+### Use amazonriver
 
     amazonriver -config config.json
 
-## PG 配置
+## PG config
 
-PG数据库需要预先开启逻辑复制[pg配置](./doc/pg.md)
+[pg config](./doc/pg.md)
 
-## amazonriver 配置
+## amazonriver config
 
-### 监控
+### Monitor
 
-amazonriver支持使用prometheus来监控同步数据状态,[配置Grafana监控](./doc/prometheus.md)
+amazonriver has built-in support for prometheus [How to config](./doc/prometheus.md)
 
-### 同步到 elasticsearch
+### Elasticsearch
 
-[同步到elasticsearch](./doc/es.md)
+[sync to elastic search](./doc/es.md)
 
-### 同步到 kafka
+### Kafka
 
-[同步到kafka](./doc/kafka.md)
+[sync to kafka](./doc/kafka.md)
 
-## 许可
+## License
 
-amazonriver 使用 Apache License 2 许可
+amazonriver released under Apache License 2
