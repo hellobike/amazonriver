@@ -13,7 +13,11 @@ amazonriver 是一个将postgresql的实时数据同步到es或kafka的服务
 
 - Postgresql 9.4 or later
 - Kafka 0.8 or later
-- ElasticSearch 6.x
+- ElasticSearch 5.x
+
+## 架构图
+
+![架构图](./doc/arch.png)
 
 ## 原理
 
@@ -51,6 +55,10 @@ amazonriver支持使用prometheus来监控同步数据状态,[配置Grafana监�
 ### 同步到 kafka
 
 [同步到kafka](./doc/kafka.md)
+
+## 性能测试
+
+[性能测试](./doc/test.md)
 
 ## 许可
 

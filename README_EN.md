@@ -7,6 +7,10 @@
 
 amazonriver utilize the postgresql logical replication to sync realtime data into elasticsearch or kafka...
 
+## architecture
+
+![architecture](./doc/arch.png)
+
 ## Required
 
 - Postgresql 9.4 or later
