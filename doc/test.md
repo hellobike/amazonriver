@@ -15,7 +15,7 @@ PG:
 
 |类别|名称|
 |---|---|
-|pg    |9.4|
+|PG    |9.4|
 |OS       | centos 6.5 |
 |CPU      |Common KVM CPU 16 CORE|
 |RAM      |32GB|
@@ -25,7 +25,7 @@ ES:
 
 |类别|名称|
 |---|---|
-| es | 5.6.3 |
+| ES | 5.6.3 |
 |OS       | centos 6.5 |
 |CPU      |Common KVM CPU 8 CORE|
 |RAM      |64GB|
@@ -36,7 +36,7 @@ KAFKA:
 
 |类别|名称|
 |---|---|
-| kafka | 0.9 |
+| KAFKA | 0.9 |
 |OS       | centos 6.5 |
 |CPU      |Common KVM CPU 4 CORE|
 |RAM      |8GB|
