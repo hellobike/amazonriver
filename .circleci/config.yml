@@ -24,4 +24,5 @@ jobs:
       # specify any bash command here prefixed with `run: `
       - run: GO111MODULE=on go test -v -cover ./...
       - run: go get -u github.com/mattn/goveralls
-      - run: GO111MODULE=on goveralls -service=circleci -repotoken $COVERALLS_TOKEN
+      - run: GO111MODULE=on go mod vendor
+      - run: goveralls -service=circleci -repotoken $COVERALLS_TOKEN
