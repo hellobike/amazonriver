@@ -1,0 +1,27 @@
+{
+  "pg_dump_path": "",
+  "subscribes": [{
+    "dump": false,
+    "slotName": "slot_for_es",
+    "pgConnConf": {
+      "host": "127.0.0.1",
+      "port": 5432,
+      "database": "test",
+      "user": "postgres",
+      "password": "admin"
+    },
+    "rules": [{
+      "table": "student_name",
+      "pks": ["id"],
+      "esid": ["id"],
+      "index": "student_name",
+      "type": "logs"
+    }],
+    "esConf": {
+      "addrs": "http://dev-es.hellobike.cn:9200",
+      "user": "",
+      "password": ""
+    },
+    "retry": 0
+  }]
+}
