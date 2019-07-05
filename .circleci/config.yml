@@ -22,6 +22,6 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
-      - run: go test -v -cover ./...
+      - run: GO111MODULE=on go test -v -cover ./...
       - run: go get -u github.com/mattn/goveralls
       - run: goveralls -service=circleci -repotoken $COVERALLS_TOKEN
