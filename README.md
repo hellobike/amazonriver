@@ -30,7 +30,6 @@ amazonriver 利用pg内部的逻辑复制功能,通过在pg创建逻辑复制槽
 ```shell
 $git clone https://github.com/hellobike/amazonriver
 $cd amazonriver
-$glide install
 $go install
 ```
 
