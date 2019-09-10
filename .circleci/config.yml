@@ -25,5 +25,5 @@ jobs:
       - run: go get -u github.com/mattn/goveralls
       - run: go get -u golang.org/x/tools/cmd/cover
       - run: GO111MODULE=on go mod vendor
-      - run: go test -v -covermode=count -coverprofile=coverage.out
+      - run: go test -v -covermode=count -coverprofile=coverage.out ./...
       - run: goveralls -coverprofile=coverage.out -service=circleci -repotoken $COVERALLS_TOKEN
