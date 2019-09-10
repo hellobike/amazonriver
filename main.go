@@ -30,7 +30,6 @@ import (
 
 var configfile = flag.String("config", "", "config")
 var loglevel = flag.String("level", "debug", "log level")
-
 func main() {
 	flag.Parse()
 
