@@ -24,7 +24,6 @@ amazonriver utilize the postgresql logical replication to sync realtime data int
 ```shell
 $git clone https://github.com/hellobike/amazonriver
 $cd amazonriver
-$glide install
 $go install
 ```
 
