@@ -1,4 +1,4 @@
-# amazonriver [![CircleCI](https://circleci.com/gh/hellobike/amazonriver.svg?style=svg)](https://circleci.com/gh/hellobike/amazonriver)
+# amazonriver [![CircleCI](https://circleci.com/gh/hellobike/amazonriver.svg?style=svg)](https://circleci.com/gh/hellobike/amazonriver) [![Actions Status](https://github.com/hellobike/amazonriver/workflows/Go/badge.svg)](https://github.com/hellobike/amazonriver/actions)
 
 [English doc](./README_EN.md)
 
